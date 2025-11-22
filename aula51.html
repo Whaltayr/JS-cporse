@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            min-height: 100vh;
+        }
+
+        main {
+            max-width: 1000px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 600px;
+        }
+
+        #pesquisas {
+            border: 2px solid rgb(74, 140, 54);
+            background-color: rgb(74, 175, 119);
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+            border-radius: 10px;
+
+            & input {
+                height: 40px;
+            }
+
+            & button {
+                width: 150px;
+                height: 30px;
+            }
+        }
+
+        #array {
+            border: 2px solid rgb(175, 110, 54);
+            background-color: rgb(175, 131, 74);
+            padding: 1rem;
+            border-radius: 10px;
+            margin: auto;
+        }   
+      
+
+        #resultados {
+            border: 2px solid rgb(107, 150, 10);
+            background-color: rgb(107, 189, 87);
+            min-height: 40px;
+            border-radius: 10px;
+            width: 100%;
+        }
+    </style>
+    <main>
+        <div class="container">
+            <div class="array_box">
+                <p >Array:</p>
+                <p id="array"></p>
+            </div>
+
+            <div class="pesquisas_box">
+                <!-- <input id="txt_pesquisar" type="text" placeholder="pesquisar"> -->
+                <button id="btnVerificar">verificar</button>
+            </div>
+
+            <div class="resultados_box">
+                <p>Resultados:</p>
+                <p id="resultados"></p>
+            </div>
+        </div>
+    </main>
+    <script src="aula51.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            min-height: 100vh;
+        }
+
+        .caixa1,
+        .caixa2 {
+            height: 32rem;
+            width: 12rem;
+            border: 2px solid black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .selecionado {
+            background-color: firebrick;
+            color: bisque;
+        }
+
+        .curso {
+            border: 1px solid purple;
+            width: 100px;
+            text-align: center;
+            padding: .5rem;
+            border-radius: 10px;
+            font-family: poppins;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .5em;
+        }
+
+        .btn_li {
+            height: 18px;
+
+            background-color: aqua;
+        }
+
+        .caixa2 button {
+            width: 90%;
+            height: 40px;
+            border-radius: 22px;
+            border: none;
+            background-color: #ccc;
+            font-weight: 700;
+        }
+
+        .caixa2 input {
+            height: 40px;
+        }
+    </style>
+    <div id="caixa1" class="caixa1">
+
+    </div>
+    <div id="caixa2" class="caixa2">
+        <input id="nomeCurso" type="search">
+        <button id="adicionarAntes" type="submit">an Adicionar</button>
+        <button id="adicionarDepois" type="submit">de Adicionar</button>
+        <button id="remover" type="submit">Remover Selecionado</button>
+        <button id="btnCursoSelecionado" type="submit">Curso Selecionado</button>
+    </div>
+    <script>
+        const caixaCursos = document.getElementById('caixa1');
+        const btn_c = [...document.querySelectorAll('.curso')];
+        const btnRemove = document.getElementById("remover");
+        const c1_2 = document.getElementById('caixa2');
+        const cursos = ['CSS', 'HTML', 'C++', 'Python', 'Ruby', 'Lua', 'Dart'];
+        const btnCursosSelecionado = document.getElementById("btnCursoSelecionado");
+        const btnAddAntes = document.getElementById('adicionarAntes')
+        const btnAddDepois = document.getElementById('adicionarDepois')
+        const nomeCurso = document.getElementById('nomeCurso')
+
+        let indice = 0
+
+        const criarNovoCurso = (curso) => {
+            const novoElemento = document.createElement("div")
+            novoElemento.setAttribute("id", "c" + indice)
+            novoElemento.setAttribute("class", "curso c1")
+            novoElemento.innerHTML = curso
+            const comandos = document.createElement("div")
+            comandos.setAttribute("class", "comandos")
+            const rb = document.createElement("input")
+            rb.setAttribute("type", "radio")
+            rb.setAttribute("name", "rb_curso")
+            comandos.appendChild(rb)
+            novoElemento.appendChild(comandos)
+
+            return novoElemento
+        }
+        cursos.map((el, chave) => {
+            const novoElemento = criarNovoCurso(el)
+            caixaCursos.appendChild(novoElemento)
+            indice++
+        })
+
+
+        const cursoSelecionado = () => {
+            const todosradios = [...document.querySelectorAll("input[type=radio]")]
+            const radioSelecionado = todosradios.filter((ele) => {
+                return ele.checked
+            })
+            return radioSelecionado[0]
+        }
+
+        btnCursosSelecionado.addEventListener("click", (evt) => {
+            const rS = cursoSelecionado()
+            if (rS != undefined) {
+                const cursoSelect = rS.parentNode.previousSibling.textContent
+                alert(`Curso selecionado: ${cursoSelect}`)
+            } else {
+                alert("Escolha um curso")
+            }
+
+
+        })
+        btnRemove.addEventListener("click", (evt) => {
+            const rS = cursoSelecionado()
+            if (rS != undefined) {
+                const cursoSelect = rS.parentNode.parentNode
+                cursoSelect.remove()
+
+            } else {
+                alert("Escolha um curso")
+            }
+        })
+
+        btnAddAntes.addEventListener('click', (evt) => {
+            const rS = cursoSelecionado()
+
+            try {
+                //adicionamos o curso antes dos outros curso funciona
+
+                if (nomeCurso.value != "") {
+                    const cursoSelect = rS.parentNode.parentNode
+                    const novoCurso = criarNovoCurso(nomeCurso.value)
+                    caixaCursos.insertBefore(novoCurso, cursoSelect)
+                    console.log(cursoSelect);
+                } else {
+                    alert('Escreva um curso')
+                }
+
+            } catch (ex) {
+                alert("Escolha um curso")
+            }
+        })
+        btnAddDepois.addEventListener('click', (evt) => {
+            const rS = cursoSelecionado()
+
+            try {
+                //adicionamos o curso antes dos outros curso funciona
+
+                if (nomeCurso.value != "") {
+                    const cursoSelect = rS.parentNode.parentNode
+                    const novoCurso = criarNovoCurso(nomeCurso.value)
+                    caixaCursos.insertBefore(novoCurso, cursoSelect.nextSibling)
+                    console.log(cursoSelect);
+
+                } else {
+                alert("Escreva um curso")
+                }
+
+
+            } catch (ex) {
+                alert("Escolha um curso")
+            }
+        })
+
+
+
+    </script>
+
+</body>
+
+</html>
