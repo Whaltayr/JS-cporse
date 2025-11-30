@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        *{margin: 0;padding: 0;}
+        main{
+            margin: 2rem auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            box-sizing: border-box;
+        }
+        .campoForm{
+            background-color: #e6e6e6;
+            padding: 1rem 2rem;
+            width: 350px;
+        }
+        .pessoa{
+            padding: .4rem;
+            border: 2px solid red;
+        }
+        .red{
+            display: flex;
+            padding: .4rem;
+        }
+    </style>
+    <main>
+        <div class="campoForm">
+            <label for="">Nome</label>
+            <input type="text" name="f_name" id="f_name" value="">
+        </div>
+
+         <div class="campoForm">
+            <label for="">Idade</label>
+            <input type="text" name="f_idade" id="f_idade" value="">
+        </div>
+
+         <div class="campoForm">
+            <button id="btn_add">adicionar</button>
+        </div>
+         <div id="red">
+            
+        </div>
+    </main>
+
+    <script src="aula60.js"></script>
+    
+</body>
+</html>

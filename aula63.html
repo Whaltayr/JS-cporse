@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
+
+    #carros {
+        display: flex;
+        flex-wrap: wrap;
+        gap: .3rem;
+        width: 100%;
+        padding: .2rem;
+        border: solid 3px rgb(5, 5, 34);
+    }
+
+    .carro {
+        display: flex;
+        width: 200px;
+        padding: .2rem;
+        background-color: aquamarine;
+        border: solid 3px rgb(10, 10, 206);
+    }
+
+    .input-group {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+        background-color: gray;
+        width: 400px;
+        gap: .5rem;
+    }
+
+    .input-card input {
+        font-size: 18px;
+        border-radius: 4px;
+        border: none;
+    }
+
+    input [radio] {
+        cursor: pointer;
+    }
+
+    .res {
+        padding: 1rem;
+        border: 1px solid black;
+    }
+
+    button {
+        padding: .3rem;
+        width: 50%;
+        align-self: center;
+    }
+</style>
+
+<body>
+    <main>
+        <div class="input-group">
+            <div class="input-card">
+                <label for="f_nome">Nome</label>
+                <input type="text" id="f_nome">
+            </div>
+            <div class="input-card">
+                <label for="f_portas">Portas</label>
+                <input type="number" id="f_portas" value="0">
+            </div>
+            <div class="input-card">
+                <label for="f_blindagem">Blindagem</label>
+                <input type="number" id="f_blindagem" value="0">
+            </div>
+            <div class="input-card">
+                <label for="f_municao">Munição</label>
+                <input type="number" id="f_municao" disabled value="0">
+            </div>
+            <div class="radio-card">
+                <label for="f_tipoNormal">Normal</label>
+                <input type="radio" name="f_tipo" id="f_tipoNormal" value="n" de>
+                <label for="f_tipoMilitar">Militar</label>
+                <input type="radio" name="f_tipo" id="f_tipoMilitar" value="m">
+            </div>
+            <button id="btn_add">Adicionar</button>
+            <div id="carros"></div>
+        </div>
+    </main>
+    <script src="aula63.js"></script>
+</body>
+
+</html>
