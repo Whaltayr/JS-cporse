@@ -7,6 +7,11 @@ const f_municao = document.getElementById("f_municao");
 const btnAdd = document.getElementById("btn_add");
 const carros = document.getElementById("carros");
 
+const removerCarro=(quem)=>{
+    a_carros = a_carros.filter((el)=>{
+        return el.nome!=quem
+    })
+}
 let a_carros = [];
 //consdições top
 f_tipoMilitar.addEventListener("click", (evt) => {
@@ -20,15 +25,33 @@ f_tipoNormal.addEventListener("click", (evt) => {
   f_municao.setAttribute("disabled", "disabled");
 });
 
+
 const gerirCarros = () => {
   carros.innerHTML = "";
   a_carros.forEach((c) => {
-    const div = document.createElement("div");
+    const div = document.createElement("ul");
+    const btn = document.createElement("button");
+    btn.addEventListener('click',(evt)=>{
+        const quemRemover = evt.target.parentNode.dataset.nome;
+        removerCarro(quemRemover)
+        gerirCarros()
+        
+    })
+    btn.innerHTML="Remover"
     div.setAttribute("class", "carro");
-    div.innerHTML =`Nome:${c.nome}\n Portasj ` ;
+    div.setAttribute("data-nome", c.nome);
+    div.innerHTML =
+   `Nome:${c.nome} <br/>
+    Portas:${c.portas} <br/>
+    Cor:${c.cor} <br/> 
+    Blindagem:${c.blindagem}<br/>
+    Munição:${c.municao} `;
+    div.appendChild(btn)
     carros.appendChild(div);
   });
+
 };
+
 
 btnAdd.addEventListener("click", () => {
   if (f_tipoNormal.checked) {
@@ -46,8 +69,8 @@ btnAdd.addEventListener("click", () => {
   gerirCarros();
   f_nome.value = "";
   f_portas.value = 0;
-  f_blindagem.value=0
-  f_municao.value=0
+  f_blindagem.value = 0;
+  f_municao.value = 0;
 });
 
 //herança tudo emplementado no pai vale para o filho
