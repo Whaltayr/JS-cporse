@@ -1,26 +1,23 @@
 //polimorfismo, a capacidae de um mesmo metod ter ações diferentes.
 
-class CarroPadrao{
-    constructor(){
-
-        if (this.constructor===CarroPadrao) {
-            throw new TypeError("Classe CarroPadrao Não pode ser instanceada")
-        }
-        if (this.ligar===undefined) {
-            throw new TypeError("Não foi criada a função ligar")
-        }
-
-        this.rodas=4
-        this.portas=4
-        this.ligado=false
+class CarroPadrao {
+  constructor() {
+    if (this.constructor === CarroPadrao) {
+      throw new TypeError("Classe CarroPadrao Não pode ser instanceada");
     }
-    ligar(){
-        
-    }
+    if (this.ligar === undefined) {
+      throw new TypeError("Não foi criada a função ligar");
+    }                   
+    this.rodas = 4;
+    this.portas = 4;
+    this.ligado = false;
+  }
+  ligar() {}
 }
 
-class Carro {
+class Carro extends CarroPadrao {
   constructor(tipo, estagioTurbo) {
+    super();
     this.turbo = new Turbo(estagioTurbo);
     if (tipo == 1) {
       this.velMax = 120;
@@ -36,7 +33,9 @@ class Carro {
     this.velMax += this.turbo.pot;
   }
   info() {
-    console.log(`Nome: ${this.nome}\nVelMax: ${this.velMax}\nTurbo: ${this.turbo.pot}\n-----------------`);
+    console.log(
+      `Nome: ${this.nome}\nVelMax: ${this.velMax}\nTurbo: ${this.turbo.pot}\n ${this.rodas}\n${this.portas}\n-----------------`
+    );
   }
 }
 
@@ -60,15 +59,17 @@ class CarroEspecial extends Carro {
     this.velMax = 400 + this.turbo.pot;
     this.nome = "Super Xandão";
   }
-  info(){
-     console.log(`|:|:|:|:|:|:|:|:|:|:|:|:|\nNome...: ${this.nome}\nVelMax.: ${this.velMax}\nTurbo..: ${this.turbo.pot}\n-----------------`);
+  info() {
+    console.log(
+      `|:|:|:|:|:|:|:|:|:|:|:|:|\nNome...: ${this.nome}\nVelMax.: ${this.velMax}\nTurbo..: ${this.turbo.pot}\n-----------------`
+    );
   }
 }
 
 const c1 = new Carro(1, 0);
 const c2 = new Carro(1, 2);
-const c3 = new CarroEspecial(3)
+const c3 = new CarroEspecial(3);
 
 c1.info();
 c2.info();
-c3.info()
+c3.info();
